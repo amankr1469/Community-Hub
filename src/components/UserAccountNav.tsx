@@ -14,7 +14,7 @@ import {
 import { UserAvatar } from '@/components/UserAvatar'
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
-  user: Pick<User, 'name' | 'image' | 'email'>
+  user: Pick<User, 'name' | 'image' | 'email'> //Typescript utility type 'Pick' that allow us to enter custom type.
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
