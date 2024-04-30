@@ -49,6 +49,7 @@ const Layout = async ({
       })
 
   const isSubscribed = !!subscription
+  //!! turn the value into a boolean
 
   if (!subreddit) return notFound()
 
