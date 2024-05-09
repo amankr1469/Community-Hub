@@ -18,17 +18,19 @@ interface PostFeedProps {
 const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
   const lastPostRef = useRef<HTMLElement>(null)
   const { ref, entry } = useIntersection({
-    root: lastPostRef.current,
+    root: lastPostRef.current, 
     threshold: 1,
   })
   const { data: session } = useSession()
-
+  
+  //
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+    //Query Key(Anyname)
     ['infinite-query'],
+
     async ({ pageParam = 1 }) => {
-      const query =
-        `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}` +
-        (!!subredditName ? `&subredditName=${subredditName}` : '')
+
+      const query = `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}` + (!!subredditName ? `&subredditName=${subredditName}` : '')
 
       const { data } = await axios.get(query)
       return data as ExtendedPost[]
